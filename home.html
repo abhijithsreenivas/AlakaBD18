@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>🎂HBD Alaka</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" href="css/images/favicon.ico" type="image/x-icon" />
+        <script data-main="js/main" src="js/libs/require/require.js" type="text/javascript"></script>
+        <link href="css/libs/oj/v4.1.0/alta/oj-alta-min.css" rel="stylesheet" type="text/css"/>
+        <link href="css/override.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        
+        <div id="main" style="padding: 5%">
+            
+            <div id="content" style="padding: 1%">
+                
+                
+                <h2 style="font-weight: bold">
+                    Happy Birthday Alaka 🎂
+                </h2>
+  
+ <ul id="demoMenu" 
+      data-bind="ojComponent: {component: 'ojMenu'}" 
+      style="display:none" 
+      aria-label="Element Reorder">
+    <li data-oj-command="oj-masonrylayout-cut" />
+    <li data-oj-command="oj-masonrylayout-paste-before"/>
+    <li data-oj-command="oj-masonrylayout-paste-after"/>
+  </ul>
+                
+  <div class="demo-scroll-container">
+    <div id="masonryLayout" 
+         data-bind="ojComponent: {component: 'ojMasonryLayout',
+                            reorderHandle: '.oj-panel-drag-handle'}" contextmenu="demoMenu">
+      <!-- ko foreach: chemicals -->
+      <div class="demo-tile" 
+           data-bind="css: sizeClass, 
+             attr: {id: getTileId($index())}">
+        <!-- The tile's chrome is rendered on the content, not the tile 
+        itself, because the content is what will be flipped and the 
+        chrome should flip with it.  The tile itself is not flipped 
+        because it provides 3D perspective for the content flip. -->
+        <div class="demo-tile-content">
+          
+          <div class="demo-tile-front oj-panel oj-panel-shadow-md">
+              <div class="oj-panel-drag-handle" style="text-align: left;"
+             data-bind="attr: {
+               id:  getDragHandleId($index()), 
+               'aria-labelledby': getDragHandleLabelledBy($index())}" 
+             title="Drag to reorder" 
+             aria-label="Drag to reorder, context menu available" 
+             tabindex="0" 
+             role="separator">
+                  <span style="font-size: 15px;margin-left: 10px;" data-bind="text: name"></span>
+        </div>
+              
+            
+            <div id="avatarDiv" data-bind="css: avatarDiv">
+            <oj-avatar role="img" size="[[avs]]"
+                    data-bind="attr:{'aria-label':'Avatar of ' + name}"
+                    src="[[avatar]]" class="oj-avatar-image">
+            </oj-avatar>
+            
+            </div>
+            
+            <button data-bind="attr: {
+                        id:  getButtonId($index()), 
+                        'aria-label': getFrontButtonLabel($data)}, 
+                      ojComponent: {
+                        component: 'ojButton', 
+                        chroming: 'half',
+                        display: 'icons', 
+                        icons: {start:  getFrontButtonStartIcon()}}, 
+                      click: demoFlipTile" 
+                    title="Flip forward"
+                    class="demo-front-flip-icon"></button>
+          </div>
+
+          <div class="demo-tile-back oj-panel oj-panel-shadow-md demo-hidden">
+            
+              <!-- ko if: ismsg -->
+              <div class="oj-panel-alt3 bday-msg-container">
+                  <p data-bind="text: bdaymsg">
+                  </p>
+              </div>
+              <!-- /ko-->
+              
+              <!-- ko ifnot: ismsg -->
+                
+              <img data-bind="attr:{src : msgpath}"
+                    width="90%" height="100%"/>
+                
+              <!-- /ko-->
+            <button data-bind="attr: {
+                        id:  getButtonId($index()), 
+                        'aria-label': getBackButtonLabel($data)}, 
+                      ojComponent: {
+                        component: 'ojButton', 
+                        chroming: 'half',
+                        display: 'icons', 
+                        icons: {start:  getBackButtonStartIcon()}}, 
+                      click: demoFlipTile" 
+                    title="Flip back"
+                    class="demo-back-flip-icon"></button>
+          </div>
+
+        </div>
+      </div>
+      <!-- /ko -->
+    </div>
+  </div>
+
+                
+                
+                
+                
+                
+                
+                
+            </div>
+            
+            
+        </div>
+            
+             
+        
+    </body>
+</html>
